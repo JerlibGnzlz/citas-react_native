@@ -1,20 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
 
-export default function App() {
+import React from 'react';
+import { SafeAreaView, Text, View, StyleSheet, Pressable } from 'react-native';
+
+const App = () => {
+  const nuevaCitahandler = () => {
+    console.log('diste Click..');
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.titulo}>
+          Administrador de Citas <Text style={styles.titulo2}>Veterinaria</Text>
+        </Text>
+        <Pressable style={styles.btnNuevaCita} onPress={nuevaCitahandler}>
+          <Text style={styles.btnTexto}>Nueva Cita</Text>
+        </Pressable>
+      </SafeAreaView>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'gray',
+  },
+  titulo: {
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    color: 'black',
+    fontSize: 30,
+    fontWeight: '600',
+  },
+  titulo2: {
+    color: 'green',
+    fontSize: 30,
+    fontWeight: '900',
+  },
+
+  btnNuevaCita: {
+    backgroundColor: 'red',
+  },
+  btnTexto: {
+    textAlign: 'center',
   },
 });
+
+export default App;
