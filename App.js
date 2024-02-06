@@ -29,7 +29,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'gray',
+    backgroundColor: '#00ff33',
+    padding: 20
   },
   titulo: {
     textAlign: 'center',
@@ -45,10 +46,19 @@ const styles = StyleSheet.create({
   },
 
   btnNuevaCita: {
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
+    padding: 15,
+    marginTop: 20,
+    marginLeft: 30,
+    marginRight: 30,
+    borderRadius: 20
   },
   btnTexto: {
     textAlign: 'center',
+    color: "#FFF",
+    fontSize: 20,
+    fontWeight: "900",
+    textTransform: 'uppercase'
   },
 });
 
