@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Pressable } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal } from 'react-native';
 
 const App = () => {
   const nuevaCitahandler = () => {
@@ -22,6 +22,14 @@ const App = () => {
         <Pressable style={styles.btnNuevaCita} onPress={nuevaCitahandler}>
           <Text style={styles.btnTexto}>Nueva Cita</Text>
         </Pressable>
+        <Modal
+          animationType={"fade"}
+          visible={true}
+        >
+          <Text>
+            desde el modal
+          </Text>
+        </Modal>
       </SafeAreaView>
     </View>
   );
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
   },
   btnTexto: {
     textAlign: 'center',
-    color: "#FFF",
+    color: "red",
     fontSize: 20,
     fontWeight: "900",
     textTransform: 'uppercase'
