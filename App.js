@@ -5,10 +5,14 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal } from 'react-native';
 
 const App = () => {
+
+  const [modalVisible, setModalVisible] = useState(false)
+
+
   const nuevaCitahandler = () => {
     console.log('diste Click..');
   };
@@ -19,12 +23,12 @@ const App = () => {
         <Text style={styles.titulo}>
           Administrador de Citas <Text style={styles.titulo2}>Veterinaria</Text>
         </Text>
-        <Pressable style={styles.btnNuevaCita} onPress={nuevaCitahandler}>
+        <Pressable style={styles.btnNuevaCita} onPress={() => setModalVisible(true)}>
           <Text style={styles.btnTexto}>Nueva Cita</Text>
         </Pressable>
         <Modal
-          animationType={"fade"}
-          visible={true}
+          animationType={"slide"}
+          visible={modalVisible}
         >
           <Text>
             desde el modal
@@ -37,24 +41,24 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#00ff33',
+    backgroundColor: '#0D1117',
     padding: 20
   },
   titulo: {
     textAlign: 'center',
     textTransform: 'uppercase',
-    color: 'black',
+    color: '#39D353',
     fontSize: 30,
     fontWeight: '600',
   },
   titulo2: {
-    color: 'green',
+    color: '#F1E05A',
     fontSize: 30,
     fontWeight: '900',
   },
 
   btnNuevaCita: {
-    backgroundColor: 'blue',
+    backgroundColor: '#5FD4BF',
     padding: 15,
     marginTop: 20,
     marginLeft: 30,
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
   },
   btnTexto: {
     textAlign: 'center',
-    color: "red",
+    color: "black",
     fontSize: 20,
     fontWeight: "900",
     textTransform: 'uppercase'
