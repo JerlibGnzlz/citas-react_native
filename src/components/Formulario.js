@@ -3,9 +3,11 @@ import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView } fr
 
 export const Formulario = ({ modalVisible }) => {
 
-    console.log(modalVisible)
-
-
+    const [paciente, setPaciente] = useState("")
+    const [propietario, setPropietario] = useState("")
+    const [email, setEmail] = useState("")
+    const [telefono, setTelefono] = useState("")
+    const [sintomas, setSintomas] = useState("")
 
     return (
 
@@ -28,6 +30,8 @@ export const Formulario = ({ modalVisible }) => {
                             keyboardType="default"
                             placeholder='Nombre Paciente'
                             placeholderTextColor={'#666'}
+                            value={paciente}
+                            onChangeText={setPaciente}
 
                         />
                     </View>
@@ -39,6 +43,8 @@ export const Formulario = ({ modalVisible }) => {
                             keyboardType="default"
                             placeholder='Nombre Propietario'
                             placeholderTextColor={'#666'}
+                            value={propietario}
+                            onChangeText={setPropietario}
 
                         />
                     </View>
@@ -50,6 +56,8 @@ export const Formulario = ({ modalVisible }) => {
                             keyboardType="email-address"
                             placeholder='Email Propietario'
                             placeholderTextColor={'#666'}
+                            value={email}
+                            onChangeText={setEmail}
 
                         />
                     </View>
@@ -61,6 +69,8 @@ export const Formulario = ({ modalVisible }) => {
                             keyboardType="phone-pad"
                             placeholder='Telefono Propietario'
                             placeholderTextColor={'#666'}
+                            value={telefono}
+                            onChangeText={setTelefono}
 
                         />
                     </View>
@@ -72,6 +82,8 @@ export const Formulario = ({ modalVisible }) => {
                             keyboardType="default"
                             placeholder='Sintomas'
                             placeholderTextColor={'#666'}
+                            value={sintomas}
+                            onChangeText={setSintomas}
 
                         />
                     </View>
