@@ -7,15 +7,14 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal } from 'react-native';
+import { Formulario } from './src/components/Formulario';
 
 const App = () => {
+
 
   const [modalVisible, setModalVisible] = useState(false)
 
 
-  const nuevaCitahandler = () => {
-    console.log('diste Click..');
-  };
 
   return (
     <View>
@@ -26,14 +25,12 @@ const App = () => {
         <Pressable style={styles.btnNuevaCita} onPress={() => setModalVisible(true)}>
           <Text style={styles.btnTexto}>Nueva Cita</Text>
         </Pressable>
-        <Modal
-          animationType={"slide"}
-          visible={modalVisible}
-        >
-          <Text>
-            desde el modal
-          </Text>
-        </Modal>
+
+        <Formulario
+          modalVisible={modalVisible}
+
+        />
+
       </SafeAreaView>
     </View>
   );
