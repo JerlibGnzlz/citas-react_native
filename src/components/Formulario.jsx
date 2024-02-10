@@ -112,6 +112,13 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
                         />
                     </View>
 
+                    <Pressable
+                        style={styles.btnNuevacita}
+                    >
+
+                        <Text style={styles.btnNuevaCitaTexto} > Agregar Paciente</Text>
+                    </Pressable>
+
                 </ScrollView>
             </SafeAreaView>
         </Modal >
@@ -126,11 +133,10 @@ const styles = StyleSheet.create(
             flex: 1
         },
         titulo: {
-            fontSize: 30,
-            fontWeight: "600",
             textAlign: "center",
-            marginTop: 15,
-            color: "white"
+            fontSize: 20,
+            textTransform: "uppercase",
+            fontWeight: "900"
         },
         tituoBold: {
             fontWeight: "900"
@@ -172,8 +178,24 @@ const styles = StyleSheet.create(
             fontSize: 16,
             fontWeight: "900",
             textTransform: 'uppercase'
+        },
+        btnNuevacita: {
+            marginVertical: 30,
+            marginHorizontal: 30,
+            backgroundColor: "#f59E0B",
+            borderRadius: 10,
+            padding: 15,
+
+
+        },
+        btnNuevaCitaTexto: {
+            textAlign: "center",
+            fontSize: 20,
+            textTransform: "uppercase",
+            fontWeight: "900"
 
         }
+
     }
 )
 export default Formulario
