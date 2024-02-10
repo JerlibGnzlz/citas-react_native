@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView } from 'react-native'
-import DatePicker from 'react-native-date-picker'
-
+import DateTimePicker from 'react-native-ui-datepicker';
+import dayjs from 'dayjs';
 
 const Formulario = ({ modalVisible }) => {
 
@@ -9,7 +9,7 @@ const Formulario = ({ modalVisible }) => {
     const [propietario, setPropietario] = useState("")
     const [email, setEmail] = useState("")
     const [telefono, setTelefono] = useState("")
-    const [fecha, setFecha] = useState(new Date())
+    const [fecha, setFecha] = useState(dayjs());
     const [sintomas, setSintomas] = useState("")
 
     return (
@@ -82,8 +82,13 @@ const Formulario = ({ modalVisible }) => {
                         <Text style={styles.label}>Fecha de Alta</Text>
 
 
-                        <View>
-                            <DatePicker date={fecha} />
+                        <View style={styles.container}>
+                            <DateTimePicker
+                                mode="single"
+                                date={fecha}
+                                locale="es"
+
+                            />
                         </View>
 
                     </View>
@@ -138,6 +143,11 @@ const styles = StyleSheet.create(
         input: {
             backgroundColor: "white",
             padding: 15,
+            borderRadius: 10,
+        },
+        container: {
+            flex: 1,
+            backgroundColor: '#F5FCFF',
             borderRadius: 10,
         }
     }
