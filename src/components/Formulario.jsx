@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView } from 'react-native'
+import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView, Pressable } from 'react-native'
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 
-const Formulario = ({ modalVisible }) => {
+const Formulario = ({ modalVisible, setModalVisible }) => {
 
     const [paciente, setPaciente] = useState("")
     const [propietario, setPropietario] = useState("")
@@ -25,6 +25,12 @@ const Formulario = ({ modalVisible }) => {
                         style={styles.titulo}
                     >Nueva{" "}<Text style={styles.tituoBold}>Cita</Text></Text>
 
+
+                    <Pressable
+                        onPress={() => setModalVisible(!modalVisible)}
+                        style={styles.btnCancelar}>
+                        <Text style={styles.btnCancelarTexto}>X Cancelar</Text>
+                    </Pressable>
 
                     <View style={styles.campo}>
                         <Text style={styles.label}>Nombre Paciente</Text>
@@ -149,6 +155,24 @@ const styles = StyleSheet.create(
             flex: 1,
             backgroundColor: '#F5FCFF',
             borderRadius: 10,
+        },
+        btnCancelar: {
+            marginVertical: 30,
+            marginBottom: 30,
+            backgroundColor: "#5827a4",
+            marginHorizontal: 30,
+            padding: 15,
+            borderRadius: 10,
+            borderWidth: 1,
+            borderColor: "white"
+        },
+        btnCancelarTexto: {
+            color: "#fff",
+            textAlign: "center",
+            fontSize: 16,
+            fontWeight: "900",
+            textTransform: 'uppercase'
+
         }
     }
 )
