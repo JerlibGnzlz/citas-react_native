@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView } from 'react-native'
+import DatePicker from 'react-native-date-picker'
 
-export const Formulario = ({ modalVisible }) => {
+
+const Formulario = ({ modalVisible }) => {
 
     const [paciente, setPaciente] = useState("")
     const [propietario, setPropietario] = useState("")
     const [email, setEmail] = useState("")
     const [telefono, setTelefono] = useState("")
+    const [fecha, setFecha] = useState(new Date())
     const [sintomas, setSintomas] = useState("")
 
     return (
@@ -40,7 +43,7 @@ export const Formulario = ({ modalVisible }) => {
                         <Text style={styles.label}>Nombre Propietario</Text>
                         <TextInput
                             style={styles.input}
-                            keyboardType="default"
+                            inputMode="default"
                             placeholder='Nombre Propietario'
                             placeholderTextColor={'#666'}
                             value={propietario}
@@ -53,7 +56,7 @@ export const Formulario = ({ modalVisible }) => {
                         <Text style={styles.label}>Email Propietario</Text>
                         <TextInput
                             style={styles.input}
-                            keyboardType="email-address"
+                            inputMode="email-address"
                             placeholder='Email Propietario'
                             placeholderTextColor={'#666'}
                             value={email}
@@ -66,7 +69,7 @@ export const Formulario = ({ modalVisible }) => {
                         <Text style={styles.label}>Telefono Propietario</Text>
                         <TextInput
                             style={styles.input}
-                            keyboardType="phone-pad"
+                            inputMode="phone-pad"
                             placeholder='Telefono Propietario'
                             placeholderTextColor={'#666'}
                             value={telefono}
@@ -76,10 +79,20 @@ export const Formulario = ({ modalVisible }) => {
                     </View>
 
                     <View style={styles.campo}>
+                        <Text style={styles.label}>Fecha de Alta</Text>
+
+
+                        <View>
+                            <DatePicker date={fecha} />
+                        </View>
+
+                    </View>
+
+                    <View style={styles.campo}>
                         <Text style={styles.label}>sintomas</Text>
                         <TextInput
                             style={styles.input}
-                            keyboardType="default"
+                            inputMode="default"
                             placeholder='Sintomas'
                             placeholderTextColor={'#666'}
                             value={sintomas}
@@ -129,3 +142,4 @@ const styles = StyleSheet.create(
         }
     }
 )
+export default Formulario

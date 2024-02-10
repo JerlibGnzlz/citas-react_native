@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal } from 'react-native';
-import { Formulario } from './src/components/Formulario';
+import Formulario from './src/components/Formulario.jsx';
 
 const App = () => {
 
