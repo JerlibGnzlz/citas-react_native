@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView, Pressable } from 'react-native';
+import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView, Pressable, Alert } from 'react-native';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 
@@ -11,6 +11,19 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
     const [telefono, setTelefono] = useState("");
     const [fecha, setFecha] = useState(dayjs());
     const [sintomas, setSintomas] = useState("");
+
+
+    const handleCita = () => {
+        if ([paciente, propietario, email, telefono, fecha, sintomas].includes("")) {
+            Alert.alert(
+                "Error",
+                "Todos los Campos son Requeridos",
+
+            );
+            return;
+        }
+    };
+
 
     return (
 
@@ -114,6 +127,7 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
 
                     <Pressable
                         style={styles.btnNuevacita}
+                        onPress={handleCita}
                     >
 
                         <Text style={styles.btnNuevaCitaTexto} > Agregar Paciente</Text>
