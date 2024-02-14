@@ -12,7 +12,8 @@ import Formulario from './src/components/Formulario.jsx';
 const App = () => {
 
 
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
+  const [pacientes, setPacientes] = useState([]);
 
 
 
@@ -29,6 +30,8 @@ const App = () => {
         <Formulario
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
+          setPacientes={setPacientes}
+          pacientes={pacientes}
         />
 
       </SafeAreaView>

@@ -3,7 +3,7 @@ import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView, Pre
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 
-const Formulario = ({ modalVisible, setModalVisible }) => {
+const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes }) => {
 
     const [paciente, setPaciente] = useState("");
     const [propietario, setPropietario] = useState("");
@@ -22,6 +22,16 @@ const Formulario = ({ modalVisible, setModalVisible }) => {
             );
             return;
         }
+        const nuevoPaciente = {
+            paciente,
+            propietario,
+            email,
+            telefono,
+            fecha,
+            sintomas
+        };
+
+        setPacientes([...pacientes, nuevoPaciente]);
     };
 
 
