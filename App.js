@@ -6,8 +6,9 @@
  */
 
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal, FlatList } from 'react-native';
 import Formulario from './src/components/Formulario.jsx';
+import Pacientes from './src/components/Pacientes.jsx';
 
 const App = () => {
 
@@ -27,6 +28,22 @@ const App = () => {
           <Text style={styles.btnTexto}>Nueva Cita</Text>
         </Pressable>
 
+
+        {pacientes.length === 0
+          ? <Text style={styles.noPacientes}>No hay paciente</Text>
+          : <FlatList
+            data={pacientes}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => {
+              return (
+                <Pacientes
+                  item={item}
+                />
+              );
+            }}
+          />
+        }
+
         <Formulario
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
@@ -35,13 +52,14 @@ const App = () => {
         />
 
       </SafeAreaView>
-    </View>
+    </View >
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0D1117',
+    backgroundColor: '#f3f4f6',
+    // flex: 1,
     padding: 20
   },
   titulo: {
@@ -55,14 +73,16 @@ const styles = StyleSheet.create({
     color: '#F1E05A',
     fontSize: 30,
     fontWeight: '900',
+    textAlign: 'center',
+
   },
 
   btnNuevaCita: {
     backgroundColor: '#5FD4BF',
     padding: 15,
     marginTop: 20,
-    marginLeft: 30,
-    marginRight: 30,
+    marginLeft: 20,
+    marginRight: 20,
     borderRadius: 20
   },
   btnTexto: {
@@ -72,6 +92,13 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     textTransform: 'uppercase'
   },
+  noPacientes: {
+    marginTop: 40,
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "600",
+    color: "black"
+  }
 });
 
 export default App;
