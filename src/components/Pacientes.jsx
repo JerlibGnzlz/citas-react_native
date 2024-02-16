@@ -1,13 +1,31 @@
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 
 
 
 const Pacierntes = ({ item }) => {
   const { paciente, fecha } = item;
+
+  const formatearFecha = fecha => {
+    const nuevaFecha = new Date(fecha)
+    const opciones = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    }
+
+    return nuevaFecha.toLocaleDateString("es-ES", opciones)
+  }
+
+
   return (
-    <Text style={styles.noPacientes}>
-      {paciente}
-    </Text>
+
+    <View>
+      <Text style={styles.noPacientes}>
+        {paciente}
+      </Text>
+      <Text>{formatearFecha(fecha)}</Text>
+    </View>
   );
 };
 

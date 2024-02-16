@@ -9,7 +9,7 @@ const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes }) 
     const [propietario, setPropietario] = useState("");
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
-    const [fecha, setFecha] = useState(dayjs());
+    const [fecha, setFecha] = useState(new Date());
     const [sintomas, setSintomas] = useState("");
 
 
