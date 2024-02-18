@@ -75,9 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     textAlign: 'center',
-
   },
-
   btnNuevaCita: {
     backgroundColor: '#5FD4BF',
     padding: 15,

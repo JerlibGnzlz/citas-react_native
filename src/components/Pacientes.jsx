@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Pressable } from "react-native";
 
 
 
@@ -26,6 +26,16 @@ const Pacierntes = ({ item }) => {
         {paciente}
       </Text>
       <Text style={styles.fecha}>{formatearFecha(fecha)}</Text>
+
+      <View style={styles.contenedorBotones}>
+        <Pressable style={[styles.btn, styles.btnEditar]} >
+          <Text style={styles.btnTexto}>Editar</Text>
+        </Pressable>
+
+        <Pressable style={[styles.btn, styles.btnEliminar]} >
+          <Text style={styles.btnTexto}>Eliminar</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -37,7 +47,8 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBlockColor: "#94a3b8",
     borderBottomWidth: 1
-  }, label: {
+  },
+  label: {
     color: "#374151",
     textTransform: "uppercase",
     fontWeight: 700,
@@ -51,8 +62,29 @@ const styles = StyleSheet.create({
   },
   fecha: {
     color: "#374151",
-
-
+  }
+  ,
+  contenedorBotones: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20
+  },
+  btn: {
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+    borderRadius: 10
+  },
+  btnEditar: {
+    backgroundColor: "orange"
+  },
+  btnEliminar: {
+    backgroundColor: "red"
+  },
+  btnTexto: {
+    textTransform: "uppercase",
+    fontWeight: "700",
+    fontSize: 12,
+    color: "#fff"
   }
 });
 

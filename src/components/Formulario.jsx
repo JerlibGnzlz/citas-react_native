@@ -162,7 +162,7 @@ const styles = StyleSheet.create(
     {
         contenido: {
             backgroundColor: "#6D28D9",
-            // flex: 1
+            flex: 1
         },
         titulo: {
             textAlign: "center",
