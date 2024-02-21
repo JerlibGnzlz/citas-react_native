@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
   label: {
     color: "#374151",
     textTransform: "uppercase",
-    fontWeight: 700,
+    fontWeight: "700",
     marginBottom: 10
   },
   texto: {
     color: "#6d28d9",
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
     marginBottom: 10
   },
   fecha: {
