@@ -15,8 +15,12 @@ const App = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [pacientes, setPacientes] = useState([]);
+  const [paciente, setPaciente] = useState({});
 
-
+  const pacienteEditar = (id) => {
+    const pacienteEditar = pacientes.filter(paciente => paciente.id === id);
+    setPaciente(pacienteEditar[0]);
+  };
 
   return (
     <View>
@@ -39,6 +43,8 @@ const App = () => {
               return (
                 <Pacientes
                   item={item}
+                  setModalVisible={setModalVisible}
+                  pacienteEditar={pacienteEditar}
                 />
               );
             }}
