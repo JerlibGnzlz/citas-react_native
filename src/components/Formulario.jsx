@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView, Pressable, Alert } from 'react-native';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 
-const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes }) => {
+const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes, paciente: pacienteOBJ }) => {
 
     const [paciente, setPaciente] = useState("");
+    const [id, setId] = useState("");
     const [propietario, setPropietario] = useState("");
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
     const [fecha, setFecha] = useState(new Date());
     const [sintomas, setSintomas] = useState("");
 
+
+    useEffect(() => {
+        const { nombre, propietario, email, alta, sintoma } = paciente;
+
+        if (Object.keys(pacienteOBJ).length > 0) {
+            setPaciente(pacienteOBJ.paciente);
+            setId(pacienteOBJ.id)
+            setPropietario(pacienteOBJ.propietario);
+            setEmail(pacienteOBJ.email);
+            setFecha(pacienteOBJ.fecha)
+            setTelefono(pacienteOBJ.telefono);
+            setSintomas(pacienteOBJ.sintomas);
+
+        }
+    }, [paciente]);
 
     const handleCita = () => {
         if ([paciente, propietario, email, telefono, fecha, sintomas].includes("")) {
