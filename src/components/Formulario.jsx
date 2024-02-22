@@ -3,7 +3,14 @@ import { Modal, Text, StyleSheet, SafeAreaView, TextInput, View, ScrollView, Pre
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
 
-const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes, paciente: pacienteOBJ }) => {
+const Formulario = (
+    { modalVisible,
+        setModalVisible,
+        setPacientes,
+        pacientes,
+        setPaciente: setPacientesAPP,
+        paciente: pacienteOBJ
+    }) => {
 
     const [paciente, setPaciente] = useState("");
     const [id, setId] = useState("");
@@ -38,8 +45,10 @@ const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes, pa
             );
             return;
         }
+
+
+
         const nuevoPaciente = {
-            id: Date.now(),
             paciente,
             propietario,
             email,
@@ -48,7 +57,24 @@ const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes, pa
             sintomas
         };
 
-        setPacientes([...pacientes, nuevoPaciente]);
+
+        if (id) {
+            nuevoPaciente.id = id
+
+            const pacienteActualizado = pacientes.map(
+                pacienteState => pacienteState.id === nuevoPaciente.id
+                    ? nuevoPaciente : pacienteState)
+
+            setPacientes(pacienteActualizado)
+            setPacientesAPP({})
+            return
+        } else {
+            nuevoPaciente.id = Date.now()
+            setPacientes([...pacientes, nuevoPaciente]);
+
+        }
+
+        setId("")
         setModalVisible(!modalVisible);
         setPaciente("");
         setPropietario("");
@@ -56,6 +82,7 @@ const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes, pa
         setTelefono("");
         setFecha(new Date());
         setSintomas("");
+
     };
 
 
@@ -74,7 +101,17 @@ const Formulario = ({ modalVisible, setModalVisible, setPacientes, pacientes, pa
 
 
                     <Pressable
-                        onPress={() => setModalVisible(!modalVisible)}
+                        onPress={() => {
+                            setId("")
+                            setModalVisible(!modalVisible)
+                            setPacientesAPP({})
+                            setPaciente("");
+                            setPropietario("");
+                            setEmail("");
+                            setTelefono("");
+                            setFecha(new Date());
+                            setSintomas("");
+                        }}
                         style={styles.btnCancelar}>
                         <Text style={styles.btnCancelarTexto}>X Cancelar</Text>
                     </Pressable>
