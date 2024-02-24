@@ -42,36 +42,37 @@ const App = () => {
   };
 
   return (
-    <View>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.titulo}>
-          Administrador de Citas <Text style={styles.titulo2}>Veterinaria</Text>
-        </Text>
-        <Pressable style={styles.btnNuevaCita} onPress={() => setModalVisible(true)}>
-          <Text style={styles.btnTexto}>Nueva Cita</Text>
-        </Pressable>
+
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.titulo}>
+        Administrador de Citas <Text style={styles.titulo2}>Veterinaria</Text>
+      </Text>
+      <Pressable style={styles.btnNuevaCita} onPress={() => setModalVisible(true)}>
+        <Text style={styles.btnTexto}>Nueva Cita</Text>
+      </Pressable>
 
 
-        {pacientes.length === 0
-          ? <Text style={styles.noPacientes}>No hay paciente</Text>
-          : <FlatList
-            style={styles.listado}
-            data={pacientes}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => {
-              return (
-                <Pacientes
-                  item={item}
-                  setModalVisible={setModalVisible}
-                  pacienteEditar={pacienteEditar}
-                  pacienteEliminar={pacienteEliminar}
-                  setModalPaciente={setModalPaciente}
-                  setPaciente={setPaciente}
-                />
-              );
-            }}
-          />
-        }
+      {pacientes.length === 0
+        ? <Text style={styles.noPacientes}>No hay paciente</Text>
+        : <FlatList
+          style={styles.listado}
+          data={pacientes}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => {
+            return (
+              <Pacientes
+                item={item}
+                setModalVisible={setModalVisible}
+                pacienteEditar={pacienteEditar}
+                pacienteEliminar={pacienteEliminar}
+                setModalPaciente={setModalPaciente}
+                setPaciente={setPaciente}
+              />
+            );
+          }}
+        />
+      }
+      {modalVisible && (
 
         <Formulario
           modalVisible={modalVisible}
@@ -81,30 +82,32 @@ const App = () => {
           paciente={paciente}
           setPaciente={setPaciente}
         />
+      )}
 
 
-        <Modal
-          visible={modalPaciente}
-          animationType='fade'
-        >
+      <Modal
+        visible={modalPaciente}
+        animationType='fade'
+      >
 
-          <InformacionPaciente
-            paciente={paciente}
-            setModalPaciente={setModalPaciente}
+        <InformacionPaciente
+          paciente={paciente}
+          setModalPaciente={setModalPaciente}
+          setPaciente={setPaciente}
 
-          />
-        </Modal>
+        />
+      </Modal>
 
 
-      </SafeAreaView>
-    </View >
+    </SafeAreaView>
+
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f3f4f6',
-    // flex: 1,
+    flex: 1,
     padding: 20
   },
   titulo: {

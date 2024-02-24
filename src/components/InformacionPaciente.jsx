@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, SafeAreaView, View, Pressable, StyleSheet } from 'react-native'
 
 
-const InformacionPaciente = ({ paciente, setModalPaciente }) => {
+const InformacionPaciente = ({ paciente, setModalPaciente, setPaciente }) => {
     console.log(paciente)
     return (
 
@@ -14,7 +14,10 @@ const InformacionPaciente = ({ paciente, setModalPaciente }) => {
             <View>
                 <Pressable
                     style={styles.btnCerrar}
-                    onPress={() => setModalPaciente(false)}>
+                    onPress={() => {
+                        setModalPaciente(false)
+                        setPaciente({})
+                    }}>
                     <Text style={styles.btnCerrarTexto}>
                         X Cerrar
                     </Text>
@@ -23,9 +26,30 @@ const InformacionPaciente = ({ paciente, setModalPaciente }) => {
                 <View
                     style={styles.contenido}
                 >
+                    <View style={styles.campo}>
+                        <Text style={styles.label}>Nombre Paciente</Text>
+                        <Text>{paciente.paciente}</Text>
+                    </View>
 
-                    <Text>{paciente.paciente}</Text>
+                    <View style={styles.campo}>
+                        <Text style={styles.label}>Nombre del Propietario</Text>
+                        <Text>{paciente.propietario}</Text>
+                    </View>
 
+                    <View style={styles.campo}>
+                        <Text style={styles.label}>Email</Text>
+                        <Text>{paciente.email}</Text>
+                    </View>
+
+                    <View style={styles.campo}>
+                        <Text style={styles.label}>Telefono</Text>
+                        <Text>{paciente.telefono}</Text>
+                    </View>
+
+                    <View style={styles.campo}>
+                        <Text style={styles.label}>Sintomas</Text>
+                        <Text>{paciente.sintomas}</Text>
+                    </View>
                 </View>
             </View >
         </SafeAreaView>
@@ -78,7 +102,18 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
 
         elevation: 7,
-    }
+    },
+    campo: {
+        marginTop: 10,
+        marginHorizontal: 20,
+    },
+    label: {
+        textTransform: 'uppercase',
+        color: "#000",
+        marginBottom: 10,
+        fontSize: 16,
+        fontWeight: "700"
+    },
 
 })
 
