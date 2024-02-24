@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal, FlatList, Alert } from 'react-native';
 import Formulario from './src/components/Formulario.jsx';
 import Pacientes from './src/components/Pacientes.jsx';
+import InformacionPaciente from './src/components/InformacionPaciente.jsx';
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pacientes, setPacientes] = useState([]);
   const [paciente, setPaciente] = useState({});
+  const [modalPaciente, setModalPaciente] = useState(false);
 
   const pacienteEditar = (id) => {
     const pacienteEditar = pacientes.filter(paciente => paciente.id === id);
@@ -63,6 +65,7 @@ const App = () => {
                   setModalVisible={setModalVisible}
                   pacienteEditar={pacienteEditar}
                   pacienteEliminar={pacienteEliminar}
+                  setModalPaciente={setModalPaciente}
                 />
               );
             }}
@@ -77,6 +80,16 @@ const App = () => {
           paciente={paciente}
           setPaciente={setPaciente}
         />
+
+
+        <Modal
+          visible={modalPaciente}
+          animationType='fade'
+        >
+
+          <InformacionPaciente />
+        </Modal>
+
 
       </SafeAreaView>
     </View >
