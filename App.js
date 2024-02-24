@@ -6,7 +6,7 @@
  */
 
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal, FlatList } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, Pressable, Modal, FlatList, Alert } from 'react-native';
 import Formulario from './src/components/Formulario.jsx';
 import Pacientes from './src/components/Pacientes.jsx';
 
@@ -20,6 +20,23 @@ const App = () => {
   const pacienteEditar = (id) => {
     const pacienteEditar = pacientes.filter(paciente => paciente.id === id);
     setPaciente(pacienteEditar[0]);
+  };
+
+
+  const pacienteEliminar = (id) => {
+    Alert.alert(
+      "Deseas Elimniar el paciente.?",
+      "Un paciente eliminado no se puede recuperar",
+      [
+        { text: "Cancelar" },
+        {
+          text: "Si Eliminar", onPress: () => {
+            const pacienteActualizados = pacientes.filter(pacientesState => pacientesState.id !== id);
+            setPacientes(pacienteActualizados);
+          }
+        }
+      ]
+    );
   };
 
   return (
@@ -45,6 +62,7 @@ const App = () => {
                   item={item}
                   setModalVisible={setModalVisible}
                   pacienteEditar={pacienteEditar}
+                  pacienteEliminar={pacienteEliminar}
                 />
               );
             }}
