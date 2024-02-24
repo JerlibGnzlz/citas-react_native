@@ -88,7 +88,11 @@ const App = () => {
           animationType='fade'
         >
 
-          <InformacionPaciente paciente={paciente} />
+          <InformacionPaciente
+            paciente={paciente}
+            setModalPaciente={setModalPaciente}
+
+          />
         </Modal>
 
 
