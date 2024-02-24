@@ -2,12 +2,13 @@ import React from 'react'
 import { Text, SafeAreaView } from 'react-native'
 
 
-const InformacionPaciente = () => {
+const InformacionPaciente = ({ paciente }) => {
+    console.log(paciente)
     return (
 
         <SafeAreaView>
             <Text>
-                informacion paciente
+                {paciente.paciente}
             </Text>
         </SafeAreaView>
     )

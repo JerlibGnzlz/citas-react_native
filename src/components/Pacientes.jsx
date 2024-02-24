@@ -7,7 +7,8 @@ const Pacierntes = ({
   setModalVisible,
   pacienteEditar,
   pacienteEliminar,
-  setModalPaciente
+  setModalPaciente,
+  setPaciente
 }) => {
   const { paciente, fecha, id } = item;
 
@@ -26,7 +27,12 @@ const Pacierntes = ({
 
   return (
     <Pressable
-      onLongPress={() => setModalPaciente(true)}
+      onLongPress={() => {
+        setModalPaciente(true)
+        setPaciente(item)
+
+
+      }}
     >
 
       <View style={styles.contenedor}>
