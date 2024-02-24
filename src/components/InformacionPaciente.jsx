@@ -19,9 +19,15 @@ const InformacionPaciente = ({ paciente, setModalPaciente }) => {
                         X Cerrar
                     </Text>
                 </Pressable>
+
+                <View
+                    style={styles.contenido}
+                >
+
+                    <Text>{paciente.paciente}</Text>
+
+                </View>
             </View >
-            <Text>{paciente.paciente}</Text>
-            <Text>{paciente.paciente}</Text>
         </SafeAreaView>
     )
 }
@@ -58,6 +64,21 @@ const styles = StyleSheet.create({
         fontWeight: "900",
         textTransform: 'uppercase'
     },
+    contenido: {
+        backgroundColor: "#FFF",
+        marginHorizontal: 30,
+        borderRadius: 10,
+        padding: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+
+        elevation: 7,
+    }
 
 })
 
